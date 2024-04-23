@@ -1,0 +1,73 @@
+﻿@using EducationPortal.Entities.Entity
+@model List<CompletedCourse>
+
+<form asp-controller="Enrollment" asp-action="GetAllCompletedCourses" method="get">
+    <div class="form-group">
+        <label for="studentId">Student ID:</label>
+        <input type="text" id="studentId" name="id" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Show Completed Courses</button>
+</form>
+
+<h3 style="margin-top: 20px;">Completed Courses</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Completed Course Id</th>
+            <th>Course Name</th>
+            <th>Start Date</th>
+            <th>Price Per Day</th>
+            <th>Quota</th>
+            <th>Duration In Days</th>
+            <th>Category</th>
+            <th>Instructor Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var completedCourse in Model)
+        {
+            <tr>
+                <td>@completedCourse.Id</td>
+                <td>@completedCourse.Course.Name</td>
+                <td>@completedCourse.Course.StartDate</td>
+                <td>@completedCourse.Course.PricePerDay</td>
+                <td>@completedCourse.Course.Quota</td>
+                <td>@completedCourse.Course.DurationInDays</td>
+                <td>@completedCourse.Course.Category</td>
+                <td>@completedCourse.Course.InstructorType</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

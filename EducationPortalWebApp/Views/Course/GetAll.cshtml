@@ -1,0 +1,48 @@
+﻿@using EducationPortal.Entities.DTOs.CourseDtos;
+@model List<CourseDto>
+
+@{
+    ViewData["Title"] = "All Courses";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Start Date</th>
+            <th>Price Per Day</th>
+            <th>Quota</th>
+            <th>Duration In Days</th>
+            <th>Category</th>
+            <th>Instructor Type</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.StartDate</td>
+                <td>@item.PricePerDay</td>
+                <td>@item.Quota</td>
+                <td>@item.DurationInDays</td>
+                <td>@item.Category</td>
+                <td>@item.InstructorType</td>
+              @*   <td>
+                    <form asp-controller="Course" asp-action="SavePdf" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="courseId" value="@item.Id" />
+                        <div class="form-group">
+                            <label for="file">Select PDF File:</label>
+                            <input type="file" id="file" name="file" class="form-control-file" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Content</button>
+                    </form>
+                </td> *@
+            </tr>
+        }
+    </tbody>
+</table>

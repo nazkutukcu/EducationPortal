@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Add Enrollment";
+}
+
+<h1>Add Enrollment</h1>
+
+@if (ViewBag.ErrorMessage != null)
+{
+    <div class="alert alert-danger" role="alert">
+        @ViewBag.ErrorMessage
+    </div>
+}
+
+<form asp-controller="Enrollment" asp-action="AddEnrollment" method="post">
+    <div class="form-group">
+        <label for="courseId">Course Id:</label>
+        <input type="number" id="courseId" name="courseId" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="studentId">Student Id:</label>
+        <input type="text" id="studentId" name="studentId" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Enrollment</button>
+</form>

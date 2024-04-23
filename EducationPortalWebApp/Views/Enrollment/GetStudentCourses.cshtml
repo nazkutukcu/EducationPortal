@@ -1,0 +1,56 @@
+﻿@using EducationPortal.Entities.Entity
+@model List<Enrollment>
+
+<form asp-controller="Enrollment" asp-action="GetStudentCourses" method="get">
+    <div class="form-group">
+        <label for="studentId">Student ID:</label>
+        <input type="text" id="studentId" name="id" class="form-control" required>
+    </div>
+    <button type="submit" class="btn btn-primary">Show Courses</button>
+</form>
+
+<h3 style="margin-top: 20px;">Courses I'm Enrolled In</h3>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Enrollment Id</th>
+            <th>Course Name</th>
+            <th>Start Date</th>
+            <th>Price Per Day</th>
+            <th>Quota</th>
+            <th>Duration In Days</th>
+            <th>Category</th>
+            <th>Instructor Type</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var enrollment in Model)
+        {
+            <tr>
+                <td>@enrollment.Id</td>
+                <td>@enrollment.Course.Name</td>
+                <td>@enrollment.Course.StartDate</td>
+                <td>@enrollment.Course.PricePerDay</td>
+                <td>@enrollment.Course.Quota</td>
+                <td>@enrollment.Course.DurationInDays</td>
+                <td>@enrollment.Course.Category</td>
+                <td>@enrollment.Course.InstructorType</td>
+                <td>
+                    <form id="completeForm" asp-controller="Enrollment" asp-action="CompleteCourse" method="post">
+                        <input type="hidden" name="id" value="@enrollment.Id">
+                        <button type="submit" class="btn btn-success">Complete Course</button>
+                    </form>
+                </td>
+                <td>
+                    <form id="deleteForm" asp-controller="Enrollment" asp-action="CancelEnrollment" method="post">
+                        <input type="hidden" name="id" value="@enrollment.Id">
+                        <button type="submit" class="btn btn-danger">Cancel Enrollment</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
